@@ -13,7 +13,7 @@ enum APIError: Error {
     case noData
 }
 
-final class APIService {
+class APIService {
     func searchSongs(keyword: String) async throws -> [Song] {
         var components = URLComponents(
             string: "https://itunes.apple.com/search"
