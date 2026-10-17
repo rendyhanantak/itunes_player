@@ -44,3 +44,8 @@ How to use:
 - When song selected, it will play the music and it will auto play next song.
 - When song selected, music control will be visible and can play/pause music, can go to next song, and can go to previous song
 - There is slider to control music played, go to specific time based on slider
+
+Demo:
+https://github.com/user-attachments/assets/710600f1-2dee-444f-9815-4febfd389e4b
+
+
