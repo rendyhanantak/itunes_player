@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -48,11 +49,17 @@
                             <constraint firstAttribute="width" constant="60" id="YYV-ee-q6s"/>
                         </constraints>
                     </imageView>
+                    <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXp-PW-vdp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="ZXp-PW-vdp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="0ei-BP-Axe"/>
                     <constraint firstItem="Pql-sA-Wqi" firstAttribute="leading" secondItem="XfV-OQ-Cws" secondAttribute="leading" id="4L5-s7-vte"/>
                     <constraint firstItem="g2x-sY-b1x" firstAttribute="leading" secondItem="XfV-OQ-Cws" secondAttribute="trailing" constant="8" id="4LQ-7y-V3h"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="W8X-wx-Pz5" secondAttribute="bottom" constant="8" id="FM0-4d-pSm"/>
+                    <constraint firstAttribute="bottom" secondItem="ZXp-PW-vdp" secondAttribute="bottom" id="J1E-Mp-j9i"/>
                     <constraint firstItem="XfV-OQ-Cws" firstAttribute="leading" secondItem="W8X-wx-Pz5" secondAttribute="trailing" constant="8" id="JDp-EY-6rJ"/>
                     <constraint firstItem="g2x-sY-b1x" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="JuF-90-nXC"/>
                     <constraint firstAttribute="bottom" secondItem="Uog-60-hHM" secondAttribute="bottom" constant="8" id="KRN-K0-O19"/>
@@ -62,7 +69,9 @@
                     <constraint firstItem="W8X-wx-Pz5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="cOD-Tx-6jD"/>
                     <constraint firstItem="W8X-wx-Pz5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="eS1-Vc-ude"/>
                     <constraint firstItem="Pql-sA-Wqi" firstAttribute="trailing" secondItem="XfV-OQ-Cws" secondAttribute="trailing" id="iKc-an-nu4"/>
+                    <constraint firstItem="ZXp-PW-vdp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="jaO-QR-l8x"/>
                     <constraint firstItem="Pql-sA-Wqi" firstAttribute="top" secondItem="XfV-OQ-Cws" secondAttribute="bottom" constant="4" id="lyq-8N-cnB"/>
+                    <constraint firstAttribute="trailing" secondItem="ZXp-PW-vdp" secondAttribute="trailing" id="tVq-In-8Qz"/>
                     <constraint firstItem="Uog-60-hHM" firstAttribute="trailing" secondItem="XfV-OQ-Cws" secondAttribute="trailing" id="tef-xH-HQN"/>
                     <constraint firstAttribute="trailing" secondItem="g2x-sY-b1x" secondAttribute="trailing" constant="16" id="zNU-pP-L1L"/>
                 </constraints>
@@ -71,6 +80,7 @@
             <connections>
                 <outlet property="albumLabel" destination="Uog-60-hHM" id="0GA-LT-eh4"/>
                 <outlet property="artistLabel" destination="Pql-sA-Wqi" id="U0q-qE-kj5"/>
+                <outlet property="maskingView" destination="ZXp-PW-vdp" id="d5C-nb-K9W"/>
                 <outlet property="playingStateImageView" destination="g2x-sY-b1x" id="7vX-BY-mEz"/>
                 <outlet property="songImageView" destination="W8X-wx-Pz5" id="iW6-UJ-hIt"/>
                 <outlet property="songNameLabel" destination="XfV-OQ-Cws" id="rha-eK-8zY"/>
@@ -80,5 +90,8 @@
     </objects>
     <resources>
         <image name="icon_music_played" width="256" height="256"/>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

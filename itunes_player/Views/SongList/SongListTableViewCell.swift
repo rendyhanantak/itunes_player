@@ -13,6 +13,7 @@ class SongListTableViewCell: UITableViewCell {
     @IBOutlet weak var songNameLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var albumLabel: UILabel!
+    @IBOutlet weak var maskingView: UIView!
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -36,8 +37,10 @@ class SongListTableViewCell: UITableViewCell {
         
         if playedTrackId == song.trackId {
             playingStateImageView.isHidden = false
+            maskingView.isHidden = false
         } else {
             playingStateImageView.isHidden = true
+            maskingView.isHidden = true
         }
         
         guard let artworkURL = song.artworkUrl100 else {

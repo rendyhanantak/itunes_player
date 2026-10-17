@@ -13,6 +13,8 @@ class SongListViewController: UIViewController {
     @IBOutlet weak var activityIndicatorContainerView: UIView!
     @IBOutlet weak var playerView: CustomPlayerView!
     
+    @IBOutlet weak var heightCustomPlayerConstraint: NSLayoutConstraint!
+    
     private let viewModel = SongListViewModel(apiService: APIService())
     private var playerViewModel: CustomPlayerModel?
     private let audioService = AudioPlayerService()
@@ -57,6 +59,7 @@ class SongListViewController: UIViewController {
     }
     
     private func setupPlayerView() {
+        hidePlayerView()
         playerView.onNextTapped = { [weak self] in
             guard let self else { return }
             self.playerViewModel?.playNext()
@@ -84,7 +87,6 @@ class SongListViewController: UIViewController {
                 audioService: audioService
             )
             self.bindPlayerViewModel()
-            self.playerViewModel?.play()
             self.tableView.reloadData()
         }
 
@@ -119,6 +121,16 @@ class SongListViewController: UIViewController {
     private func resetSearch() {
         searchBar.searchTextField.text = defaultKeyword
         viewModel.searchSongs(keyword: defaultKeyword)
+    }
+    
+    private func showPlayerView() {
+        heightCustomPlayerConstraint.constant = 160
+        playerView.isHidden = false
+    }
+    
+    private func hidePlayerView() {
+        heightCustomPlayerConstraint.constant = 0
+        playerView.isHidden = true
     }
 }
 
@@ -168,6 +180,7 @@ extension SongListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        showPlayerView()
         playerView.resetSlider()
         playerViewModel?.reset(to: indexPath.row)
         playerViewModel?.play()

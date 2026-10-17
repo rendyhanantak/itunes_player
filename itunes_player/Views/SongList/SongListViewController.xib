@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SongListViewController" customModule="itunes_player" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicatorContainerView" destination="4F7-i8-aoR" id="Ka3-ca-EPE"/>
+                <outlet property="heightCustomPlayerConstraint" destination="tRs-TP-k6a" id="yNl-GG-tU8"/>
                 <outlet property="playerView" destination="ACe-cu-6cj" id="yHc-Fv-04T"/>
                 <outlet property="searchBar" destination="vgH-SV-JNl" id="9cA-hM-FFL"/>
                 <outlet property="tableView" destination="uRq-g3-b34" id="nNM-Gl-2lX"/>
