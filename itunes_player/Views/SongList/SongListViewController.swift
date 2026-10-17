@@ -11,10 +11,15 @@ class SongListViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatorContainerView: UIView!
+    @IBOutlet weak var playerView: CustomPlayerView!
     
     private let viewModel = SongListViewModel(apiService: APIService())
+    private var playerViewModel: CustomPlayerModel?
+    private let audioService = AudioPlayerService()
     
     private var defaultKeyword = "Beyonce" //search api needs keyword, can't searching all song
+    
+    private var playedTrackId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +58,13 @@ class SongListViewController: UIViewController {
     private func bindViewModel() {
         viewModel.onSongsUpdated = { [weak self] in
             guard let self else { return }
+            self.playerViewModel = CustomPlayerModel(
+                songs: viewModel.songs,
+                selectedIndex: 0,
+                audioService: audioService
+            )
+            self.bindPlayerViewModel()
+            self.playerViewModel?.play()
             self.tableView.reloadData()
         }
 
@@ -90,6 +102,26 @@ class SongListViewController: UIViewController {
     }
 }
 
+extension SongListViewController {
+    private func bindPlayerViewModel() {
+        playerViewModel?.onSongChanged = { [weak self] song in
+            self?.playedTrackId = song.trackId
+            self?.tableView.reloadData()
+        }
+        playerViewModel?.onPlaybackStateChanged = {
+            [weak self] isPlaying in
+            self?.playerView.configure(isPlayed: isPlaying)
+        }
+        playerViewModel?.onProgressChanged = {
+            [weak self] currentTime, duration in
+            guard let self else {
+                return
+            }
+            self.playerView.configure(sliderMaxValue: Float(max(duration, 1)), sliderValue: Float(currentTime))
+        }
+    }
+}
+
 extension SongListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let totalData = viewModel.totalSongs()
@@ -111,8 +143,14 @@ extension SongListViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let song = viewModel.song(position: indexPath.row)
-        cell.configure(song: song)
+        cell.configure(song: song, playedTrackId: self.playedTrackId)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        playerView.resetSlider()
+        playerViewModel?.reset(to: indexPath.row)
+        playerViewModel?.play()
     }
 }
 
@@ -124,6 +162,7 @@ extension SongListViewController: UISearchBarDelegate {
             resetSearch()
             return
         }
+        playerViewModel?.reset()
         viewModel.searchSongs(keyword: keyword)
     }
 }

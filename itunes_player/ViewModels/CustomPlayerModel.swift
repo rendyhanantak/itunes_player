@@ -68,14 +68,12 @@ final class CustomPlayerModel {
 
     func togglePlayPause() {
         if isPlaying {
-            audioService.pause()
-            isPlaying = false
+            pause()
         } else {
             if currentTime == 0 && duration == 0 {
                 play()
                 return
             }
-
             audioService.resume()
             isPlaying = true
         }
@@ -103,5 +101,12 @@ final class CustomPlayerModel {
 
     func seek(to value: Double) {
         audioService.seek(to: value)
+    }
+    
+    func reset(to index: Int = 0) {
+        audioService.pause()
+        isPlaying = false
+        self.currentIndex = index
+        self.currentTime = 0
     }
 }
