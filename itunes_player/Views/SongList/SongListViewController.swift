@@ -195,6 +195,7 @@ extension SongListViewController: UISearchBarDelegate {
             resetSearch()
             return
         }
+        hidePlayerView()
         playerViewModel?.reset()
         viewModel.searchSongs(keyword: keyword)
     }
