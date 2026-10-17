@@ -29,23 +29,33 @@
                     </connections>
                 </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uRq-g3-b34">
-                    <rect key="frame" x="0.0" y="182" width="393" height="602"/>
+                    <rect key="frame" x="0.0" y="182" width="393" height="442"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACe-cu-6cj" customClass="CustomPlayerView" customModule="itunes_player" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="624" width="393" height="160"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="160" id="tRs-TP-k6a"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="ACe-cu-6cj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0kR-OH-CyH"/>
                 <constraint firstItem="vgH-SV-JNl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2jE-t9-QJV"/>
                 <constraint firstItem="uRq-g3-b34" firstAttribute="top" secondItem="vgH-SV-JNl" secondAttribute="bottom" id="8xa-Gi-7Md"/>
                 <constraint firstItem="uRq-g3-b34" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="F4f-3z-NCQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ACe-cu-6cj" secondAttribute="bottom" id="HgY-dz-Jqf"/>
                 <constraint firstItem="vgH-SV-JNl" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="JnF-0B-UIf"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="uRq-g3-b34" secondAttribute="bottom" id="Ju2-Z4-esg"/>
                 <constraint firstItem="vgH-SV-JNl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="LOd-SL-mle"/>
+                <constraint firstItem="ACe-cu-6cj" firstAttribute="top" secondItem="uRq-g3-b34" secondAttribute="bottom" id="Rk9-Ff-BSq"/>
                 <constraint firstItem="uRq-g3-b34" firstAttribute="top" secondItem="vgH-SV-JNl" secondAttribute="bottom" id="aWJ-81-3vq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ACe-cu-6cj" secondAttribute="trailing" id="fDj-5E-qdk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uRq-g3-b34" secondAttribute="trailing" id="nth-Qh-932"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="154"/>
+            <point key="canvasLocation" x="138.1679389312977" y="153.52112676056339"/>
         </view>
     </objects>
     <resources>
