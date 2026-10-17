@@ -42,6 +42,16 @@ class CustomPlayerView: UIView {
         contentView = view
         
         centerButton.setImage(UIImage(named: "icon_play"), for: .normal)
+        
+        setupShadow()
+    }
+    
+    private func setupShadow() {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.2
+        layer.shadowOffset = CGSize(width: 0, height: 4)
+        layer.shadowRadius = 6
+        clipsToBounds = false
     }
     
     func configure(isPlayed: Bool) {
