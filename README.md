@@ -46,6 +46,7 @@ How to use:
 - There is slider to control music played, go to specific time based on slider
 
 Demo:
+
 https://github.com/user-attachments/assets/710600f1-2dee-444f-9815-4febfd389e4b
 
 
