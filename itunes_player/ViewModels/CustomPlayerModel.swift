@@ -68,7 +68,8 @@ final class CustomPlayerModel {
 
     func togglePlayPause() {
         if isPlaying {
-            pause()
+            audioService.pause()
+            isPlaying = false
         } else {
             if currentTime == 0 && duration == 0 {
                 play()

@@ -17,6 +17,11 @@ class CustomPlayerView: UIView {
     
     private var isPlayed: Bool = false
     
+    var onPlayPauseToggled: ((Bool) -> Void)?
+    var onNextTapped: (() -> Void)?
+    var onPreviousTapped: (() -> Void)?
+    var onSliderValueChanged: ((Float) -> Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -54,5 +59,24 @@ class CustomPlayerView: UIView {
     
     func resetSlider() {
         configure(sliderMaxValue: 1, sliderValue: 0)
+    }
+    
+    @IBAction private func prevTapped(_ sender: UIButton) {
+        onPreviousTapped?()
+    }
+
+    @IBAction private func playPauseTapped(_ sender: UIButton) {
+        isPlayed.toggle()
+        let iconName = isPlayed ? "icon_play" : "icon_pause"
+        centerButton.setImage(UIImage(named: iconName), for: .normal)
+        onPlayPauseToggled?(isPlayed)
+    }
+
+    @IBAction private func nextTapped(_ sender: UIButton) {
+        onNextTapped?()
+    }
+
+    @IBAction private func sliderChanged(_ sender: UISlider) {
+        onSliderValueChanged?(sender.value)
     }
 }

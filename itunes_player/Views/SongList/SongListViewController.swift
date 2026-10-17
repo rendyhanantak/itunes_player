@@ -30,6 +30,7 @@ class SongListViewController: UIViewController {
         setupNavigationView()
         setupSearchBar()
         setupTableView()
+        setupPlayerView()
         bindViewModel()
         resetSearch()
     }
@@ -53,6 +54,25 @@ class SongListViewController: UIViewController {
             UINib( nibName: "EmptyTableViewCell", bundle: nil),
             forCellReuseIdentifier: "EmptyTableViewCell"
         )
+    }
+    
+    private func setupPlayerView() {
+        playerView.onNextTapped = { [weak self] in
+            guard let self else { return }
+            self.playerViewModel?.playNext()
+        }
+        playerView.onPreviousTapped = { [weak self] in
+            guard let self else { return }
+            self.playerViewModel?.playPrevious()
+        }
+        playerView.onPlayPauseToggled = { [weak self] isPlayed in
+            guard let self else { return }
+            self.playerViewModel?.togglePlayPause()
+        }
+        playerView.onSliderValueChanged = { [weak self] value in
+            guard let self else { return }
+            self.playerViewModel?.seek(to: Double(value))
+        }
     }
     
     private func bindViewModel() {
