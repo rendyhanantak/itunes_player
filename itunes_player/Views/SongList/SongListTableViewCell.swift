@@ -29,11 +29,35 @@ class SongListTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func configure() {
-        //TODO: remove this
-        songNameLabel.text = "Song Name"
-        artistLabel.text = "Artist Name"
-        albumLabel.text = "Album Name"
+    func configure(song: Song, playedTrackId: Int? = nil) {
+        songNameLabel.text = song.trackName
+        artistLabel.text = song.artistName
+        albumLabel.text = song.collectionName
+        
+        if playedTrackId == song.trackId {
+            playingStateImageView.isHidden = false
+        } else {
+            playingStateImageView.isHidden = true
+        }
+        
+        guard let artworkURL = song.artworkUrl100 else {
+            return
+        }
+        Task {
+            do {
+                let (data, _) = try await URLSession.shared.data(
+                    from: artworkURL
+                )
+                guard let image = UIImage(data: data) else {
+                    return
+                }
+                await MainActor.run {
+                    self.songImageView.image = image
+                }
+            } catch {
+                self.songImageView.image = UIImage(named: "icon_no_image")
+            }
+        }
     }
 
 }

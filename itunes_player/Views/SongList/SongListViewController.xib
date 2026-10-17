@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SongListViewController" customModule="itunes_player" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicatorContainerView" destination="4F7-i8-aoR" id="Ka3-ca-EPE"/>
                 <outlet property="searchBar" destination="vgH-SV-JNl" id="9cA-hM-FFL"/>
                 <outlet property="tableView" destination="uRq-g3-b34" id="nNM-Gl-2lX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -29,14 +30,33 @@
                     </connections>
                 </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uRq-g3-b34">
-                    <rect key="frame" x="0.0" y="182" width="393" height="442"/>
+                    <rect key="frame" x="0.0" y="182" width="393" height="462"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACe-cu-6cj" customClass="CustomPlayerView" customModule="itunes_player" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="624" width="393" height="160"/>
+                    <rect key="frame" x="0.0" y="644" width="393" height="140"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="160" id="tRs-TP-k6a"/>
+                        <constraint firstAttribute="height" constant="140" id="tRs-TP-k6a"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4F7-i8-aoR">
+                    <rect key="frame" x="0.0" y="182" width="393" height="200"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="aLN-Cc-9Vx">
+                            <rect key="frame" x="171.66666666666666" y="75" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="80f-hR-3mG"/>
+                                <constraint firstAttribute="width" constant="50" id="f44-WN-PvF"/>
+                            </constraints>
+                            <color key="color" systemColor="systemGrayColor"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="aLN-Cc-9Vx" firstAttribute="centerY" secondItem="4F7-i8-aoR" secondAttribute="centerY" id="Awt-Vu-kWw"/>
+                        <constraint firstItem="aLN-Cc-9Vx" firstAttribute="centerX" secondItem="4F7-i8-aoR" secondAttribute="centerX" id="d9L-RR-cdp"/>
+                        <constraint firstAttribute="height" constant="200" id="g8g-FD-i5h"/>
                     </constraints>
                 </view>
             </subviews>
@@ -47,13 +67,16 @@
                 <constraint firstItem="vgH-SV-JNl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2jE-t9-QJV"/>
                 <constraint firstItem="uRq-g3-b34" firstAttribute="top" secondItem="vgH-SV-JNl" secondAttribute="bottom" id="8xa-Gi-7Md"/>
                 <constraint firstItem="uRq-g3-b34" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="F4f-3z-NCQ"/>
+                <constraint firstItem="4F7-i8-aoR" firstAttribute="top" secondItem="uRq-g3-b34" secondAttribute="top" id="H2A-CN-nZs"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ACe-cu-6cj" secondAttribute="bottom" id="HgY-dz-Jqf"/>
+                <constraint firstItem="4F7-i8-aoR" firstAttribute="trailing" secondItem="uRq-g3-b34" secondAttribute="trailing" id="I8I-IP-HUS"/>
                 <constraint firstItem="vgH-SV-JNl" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="JnF-0B-UIf"/>
                 <constraint firstItem="vgH-SV-JNl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="LOd-SL-mle"/>
                 <constraint firstItem="ACe-cu-6cj" firstAttribute="top" secondItem="uRq-g3-b34" secondAttribute="bottom" id="Rk9-Ff-BSq"/>
                 <constraint firstItem="uRq-g3-b34" firstAttribute="top" secondItem="vgH-SV-JNl" secondAttribute="bottom" id="aWJ-81-3vq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ACe-cu-6cj" secondAttribute="trailing" id="fDj-5E-qdk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uRq-g3-b34" secondAttribute="trailing" id="nth-Qh-932"/>
+                <constraint firstItem="4F7-i8-aoR" firstAttribute="leading" secondItem="uRq-g3-b34" secondAttribute="leading" id="uCc-YZ-Zrh"/>
             </constraints>
             <point key="canvasLocation" x="138.1679389312977" y="153.52112676056339"/>
         </view>
@@ -61,6 +84,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
