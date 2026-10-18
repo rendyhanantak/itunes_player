@@ -124,7 +124,7 @@ class SongListViewController: UIViewController {
     }
     
     private func showPlayerView() {
-        heightCustomPlayerConstraint.constant = 160
+        heightCustomPlayerConstraint.constant = 200
         playerView.isHidden = false
     }
     
@@ -138,6 +138,7 @@ extension SongListViewController {
     private func bindPlayerViewModel() {
         playerViewModel?.onSongChanged = { [weak self] song in
             self?.playedTrackId = song.trackId
+            self?.playerView.configure(trackName: song.trackName)
             self?.tableView.reloadData()
         }
         playerViewModel?.onPlaybackStateChanged = {

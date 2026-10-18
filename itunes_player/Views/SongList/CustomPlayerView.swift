@@ -14,6 +14,8 @@ class CustomPlayerView: UIView {
     @IBOutlet weak var centerButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var songLabel: UILabel!
     
     private var isPlayed: Bool = false
     
@@ -65,6 +67,17 @@ class CustomPlayerView: UIView {
     func configure(sliderMaxValue: Float, sliderValue: Float) {
         slider.maximumValue = sliderMaxValue
         slider.value = sliderValue
+        configure(currentTime: sliderValue, duration: sliderMaxValue)
+    }
+    
+    func configure(trackName: String) {
+        songLabel.text = trackName
+    }
+    
+    private func configure(currentTime: Float, duration: Float) {
+        let currentTImeString = formatTime(currentTime)
+        let duration = formatTime(duration)
+        timeLabel.text = currentTImeString + " / " + duration
     }
     
     func resetSlider() {
@@ -88,5 +101,19 @@ class CustomPlayerView: UIView {
 
     @IBAction private func sliderChanged(_ sender: UISlider) {
         onSliderValueChanged?(sender.value)
+    }
+    
+    private func formatTime(_ seconds: Float) -> String {
+        guard seconds.isFinite, seconds >= 0 else {
+            return "0:00"
+        }
+        let totalSeconds = Int(seconds)
+        let minutes = totalSeconds / 60
+        let remainingSeconds = totalSeconds % 60
+        return String(
+            format: "%d:%02d",
+            minutes,
+            remainingSeconds
+        )
     }
 }
