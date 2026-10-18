@@ -181,6 +181,7 @@ extension SongListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard viewModel.totalSongs() > 0 else { return }
         showPlayerView()
         playerView.resetSlider()
         playerViewModel?.reset(to: indexPath.row)
