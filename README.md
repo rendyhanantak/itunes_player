@@ -49,4 +49,8 @@ Demo:
 
 https://github.com/user-attachments/assets/710600f1-2dee-444f-9815-4febfd389e4b
 
+<img width="20%" alt="song_list_played" src="https://github.com/user-attachments/assets/ffeabbf5-bafb-45a3-a961-cc640213703c" />
+<img width="20%" alt="song_list_no_internet" src="https://github.com/user-attachments/assets/d9ce5bf2-38fd-49e8-8154-09aad602621a" />
+<img width="20%" alt="song_list_loading_state" src="https://github.com/user-attachments/assets/ad28cf08-33ae-492e-8ede-9ac2ef3f7fc2" />
+<img width="20%" alt="song_list_empty_result" src="https://github.com/user-attachments/assets/091d43c9-4c24-4e61-87ba-e4f256b70c57" />
 
